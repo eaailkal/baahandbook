@@ -1,0 +1,20 @@
+<!-- Generated template for the Events component -->
+
+<!--
+<ion-list *ngIf="events.length > 0">
+  <ion-item *ngFor="let event of events">
+    <item [event]="event"></item>
+  </ion-item>
+</ion-list>
+<p *ngIf="events.length === 0">
+  No events.
+</p>-->
+
+<ion-list *ngIf="events.results.length > 0">
+  <ion-item *ngFor="let event of events.results">
+    <event [event]="event | async"></event>
+  </ion-item>
+</ion-list>
+<p *ngIf="events.results.length === 0">
+  No events.
+</p>

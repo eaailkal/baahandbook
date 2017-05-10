@@ -1,0 +1,42 @@
+import { Component } from '@angular/core';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { ParkData } from '../../providers/park-data';
+
+/*
+  Generated class for the ParkList page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+*/
+@Component({
+  selector: 'page-event-list',
+  templateUrl: 'event-list.html'
+})
+export class EventListPage {
+
+  // define the parks variable that we referenced in our HTML template
+  parks: Array<Object> = []
+
+  // Within the parameters of the constructor for the class
+  // define a public variable parkData of type ParkData.
+  
+  constructor(public navCtrl: NavController, public navParams: NavParams, public parkData: ParkData) {
+
+    // call the getParks method on the parkData
+    // we are leveraging the power of Promises
+    parkData.getParks().then(theResult => {
+      this.parks = theResult;
+    })
+  
+  }
+
+  goParkDetails(theParkData) {
+    console.log(theParkData);
+  }
+
+  ionViewDidLoad() {
+    console.log('ionViewDidLoad EventListPage');
+  }
+
+}
